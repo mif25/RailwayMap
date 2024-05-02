@@ -29,13 +29,13 @@
     }
     #coordinatesDisplay {
       position: fixed;
-      font-size: 2vw;
+      font-size: 3vh;
       bottom: 5px;
       right: 5px;
     }
     .point {
-        width: 1vw;
-        height: 1vw;
+        width: 2vh;
+        height: 2vh;
         border-radius: 50%;
         background-color: red;
         position: absolute;
@@ -152,7 +152,7 @@
       lineElement.setAttribute("x2", (line.x2 + 5000) * scale);
       lineElement.setAttribute("y2", (line.y2 + 5000) * scale);
       lineElement.setAttribute("stroke", line.color || "black");
-      lineElement.setAttribute("stroke-width", "0.5vw");
+      lineElement.setAttribute("stroke-width", "0.5vh");
 
       svg.appendChild(lineElement);
     });
@@ -192,22 +192,26 @@
         }
       });
 
-      div.addEventListener('mouseover', function() {
-        var nameDiv = document.createElement('div');
-        nameDiv.className = 'info-name';
-        nameDiv.innerHTML = point.name;
-        nameDiv.style.left = ((point.x + 5000) * scale + 10) + 'px';
-        nameDiv.style.top = ((point.y + 5000) * scale - 20) + 'px';
-        nameDiv.dataset.pointName = point.name;
-        canvas.appendChild(nameDiv);
-      });
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-      div.addEventListener('mouseout', function() {
-        var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
-        if (nameDiv) {
-          canvas.removeChild(nameDiv);
-        }
-      });
+      if (!isMobile) {
+        div.addEventListener('mouseover', function() {
+          var nameDiv = document.createElement('div');
+          nameDiv.className = 'info-name';
+          nameDiv.innerHTML = point.name;
+          nameDiv.style.left = ((point.x + 5000) * scale + 10) + 'px';
+          nameDiv.style.top = ((point.y + 5000) * scale - 20) + 'px';
+          nameDiv.dataset.pointName = point.name;
+          canvas.appendChild(nameDiv);
+        });
+
+        div.addEventListener('mouseout', function() {
+          var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
+          if (nameDiv) {
+            canvas.removeChild(nameDiv);
+          }
+        });
+      }
     });
   }
 
