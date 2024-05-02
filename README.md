@@ -12,7 +12,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: darkgrey;
+        background-color: #bbbbbd;
     }
     #canvasContainer {
         padding: 10px;
@@ -20,16 +20,22 @@
         max-width: 1000px;
         min-width: 300px;
         position: relative;
+        border: 4px solid #ccc;
     }
     #canvas {
         width: 100%;
         height: 100%;
-        border: 2px solid #ccc;
         position: relative;
     }
+    #coordinatesDisplay {
+      position: fixed;
+      font-size: 2vw;
+      bottom: 5px;
+      right: 5px;
+    }
     .point {
-        width: 8px;
-        height: 8px;
+        width: 1vw;
+        height: 1vw;
         border-radius: 50%;
         background-color: red;
         position: absolute;
@@ -40,7 +46,6 @@
         color: #fff;
         padding: 5px;
         border-radius: 5px;
-        display: none;
     }
 </style>
 </head>
@@ -115,13 +120,13 @@
     var coordinatesDisplay = document.getElementById('coordinatesDisplay');
     var scale = canvas.offsetWidth / 10000;
 
-      // Получаем координаты курсора относительно элемента плоскости
-      var rect = canvas.getBoundingClientRect();
-      var x = (event.clientX - rect.left) / scale - 5000;
-      var y = (event.clientY - rect.top) / scale - 5000;
+    // Получаем координаты курсора относительно элемента плоскости
+    var rect = canvas.getBoundingClientRect();
+    var x = (event.clientX - rect.left) / scale - 5000;
+    var y = (event.clientY - rect.top) / scale - 5000;
 
-      // Отображаем координаты курсора в элементе для отображения координат
-      coordinatesDisplay.textContent = 'X: ' + Math.round(x) + ', Y: ' + Math.round(y);
+    // Отображаем координаты курсора в элементе для отображения координат
+    coordinatesDisplay.textContent = 'X: ' + Math.round(x) + ', Y: ' + Math.round(y);
   });
 
   function drawLines() {
@@ -147,7 +152,7 @@
       lineElement.setAttribute("x2", (line.x2 + 5000) * scale);
       lineElement.setAttribute("y2", (line.y2 + 5000) * scale);
       lineElement.setAttribute("stroke", line.color || "black");
-      lineElement.setAttribute("stroke-width", "3");
+      lineElement.setAttribute("stroke-width", "0.5vw");
 
       svg.appendChild(lineElement);
     });
@@ -166,8 +171,26 @@
       div.style.left = ((point.x + 5000) * scale - 4) + 'px';
       div.style.top = ((point.y + 5000) * scale - 4) + 'px';
       div.style.backgroundColor = '#' + point.color;
-      div.setAttribute('title', point.name);
       canvas.appendChild(div);
+      
+      div.addEventListener('click', function() {
+        if (!div.classList.contains('clicked')) {
+          var nameDiv = document.createElement('div');
+          nameDiv.className = 'info-name';
+          nameDiv.innerHTML = point.name;
+          nameDiv.style.left = ((point.x + 5000) * scale + 10) + 'px';
+          nameDiv.style.top = ((point.y + 5000) * scale - 20) + 'px';
+          nameDiv.dataset.pointName = point.name;
+          canvas.appendChild(nameDiv);
+          div.classList.add('clicked');
+        } else {
+          var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
+          if (nameDiv) {
+            canvas.removeChild(nameDiv);
+            div.classList.remove('clicked');
+          }
+        }
+      });
 
       div.addEventListener('mouseover', function() {
         var nameDiv = document.createElement('div');
@@ -175,11 +198,15 @@
         nameDiv.innerHTML = point.name;
         nameDiv.style.left = ((point.x + 5000) * scale + 10) + 'px';
         nameDiv.style.top = ((point.y + 5000) * scale - 20) + 'px';
+        nameDiv.dataset.pointName = point.name;
         canvas.appendChild(nameDiv);
+      });
 
-        div.addEventListener('mouseout', function() {
+      div.addEventListener('mouseout', function() {
+        var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
+        if (nameDiv) {
           canvas.removeChild(nameDiv);
-        });
+        }
       });
     });
   }
