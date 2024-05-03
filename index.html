@@ -48,7 +48,6 @@
         border-radius: 5px;
         z-index: 5;
     }
-
 </style>
 </head>
 <body>
@@ -121,9 +120,10 @@
   _Dr1ke__:-4793:67:2280:false:26AE09
   lobotomy1:-2549:73:-598:true:0643AF
   karver:2343:201:-3612:true:4F9607
-  The Lobotomy Palace:-2242:89:1981:true:00FF00
+  The Lobotomy Palace [warp chill]:-2242:89:1981:true:00FF00
   Yral4uk:87:89:1259:true:D2C400
   Perech:-1618:85:119:true:4DBCAF
+  Audist:3943:144:759:true:5160AF
   `;
 
   // Регулярное выражение для извлечения данных
