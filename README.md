@@ -37,7 +37,7 @@
         position: absolute;
         width: 2vh;
         height: 2vh;
-        border-radius: 0 100% 100% 100%;
+        border-radius: 50%;
         background-color: red;
     }
     .info-name {
@@ -59,9 +59,10 @@
 </div>
 <div id="coordinatesDisplay"></div>
 <div id="info-block">
-  Серая ветка - маршрут #1 [m_i_f - Kapysta19]<br>
-  Красная ветка - маршрут #2 не введена в эксплуатацию<br>
+  Серая ветка - маршрут #1 [m_i_f - Kapysta19] ~30 минут при ~10tps<br>
+  Красная ветка - маршрут #2 [Линия №1 - sysano]  в процессе расширения<br>
   Жёлтая ветка - маршрут #3 [MACROCEIYT - IAzotI] в процессе расширения<br>
+  Зелёная ветка - линия sysano <br>
   <br>
   Станции отображаются квадратами, точками указаны базы игроков<br>
   Для того, чтобы поставить вагонетку на рельсы, используйте плиты около соответствующих железнодорожных путей.<br>
@@ -76,28 +77,47 @@
   var lines = [
     {x1: 0, y1: -5000, x2: 0, y2: 5000, name: "x", color: "black"},
     {x1: -5000, y1: 0, x2: 5000, y2: 0, name: "y", color: "black"},
+    // Маршрут #1
     {x1: -4780, y1: 2097, x2: -4857, y2: 2097, name: "Маршрут #1", color: "grey"},
-    {x1: -4857, y1: 2097, x2: -4857, y2: 2310, name: "Маршрут #1", color: "grey"},
-    {x1: -4857, y1: 2310, x2: 3740, y2: 2310, name: "Маршрут #1", color: "grey"},
+    {x1: -4857, y1: 2097, x2: -4857, y2: 2348, name: "Маршрут #1", color: "grey"},
+
+    {x1: -4857, y1: 2348, x2: -2000, y2: 2348, name: "Маршрут #1", color: "grey"},
+    {x1: -2000, y1: 2348, x2: -2000, y2: 2310, name: "Маршрут #1", color: "grey"},
+    {x1: -2000, y1: 2310, x2: 3740, y2: 2310, name: "Маршрут #1", color: "grey"},
+
     {x1: 3740, y1: 2310, x2: 3740, y2: 1533, name: "Маршрут #1", color: "grey"},
     {x1: 3740, y1: 1533, x2: 4900, y2: 1533, name: "Маршрут #1", color: "grey"},
+    // Маршрут #2
     {x1: 3599, y1: 2300, x2: 3599, y2: 4500, name: "Маршрут #2", color: "red"},
     // {x1: 3599, y1: 4500, x2: 4600, y2: 4500, name: "Маршрут #2", color: "red"},
+    // Маршрут #3
     {x1: -3700, y1: 4377, x2: -3476, y2: 4377, name: "Маршрут #3", color: "yellow"},
     {x1: -3476, y1: 4377, x2: -3476, y2: -200, name: "Маршрут #3", color: "yellow"},
     // {x1: -3476, y1: -200, x2: -2450, y2: -200, name: "Маршрут #3", color: "yellow"},
     // {x1: -2450, y1: -200, x2: -2450, y2: -800, name: "Маршрут #3", color: "yellow"},
+    // Маршрут Sysano
+    {x1: 3599, y1: 3497, x2: 3978, y2: 3497, name: "Маршрут #2", color: "green"},
+    {x1: 3978, y1: 3497, x2: 3978, y2: 3332, name: "Маршрут #2", color: "green"},
+    {x1: 3978, y1: 3332, x2: 4367, y2: 3332, name: "Маршрут #2", color: "green"},
+    {x1: 4367, y1: 3332, x2: 4367, y2: 3183, name: "Маршрут #2", color: "green"},
   ];
 
   var squares = [
-    {x: -4825, y: 2050, name: "x", color: "white"},
-    {x: -4650, y: 2260, name: "x", color: "white"},
-    {x: -3530, y: 2260, name: "x", color: "white"},
-    {x: -1955, y: 2260, name: "x", color: "grey"},
-    {x: -700, y: 2260, name: "x", color: "white"},
-    {x: 3545, y: 2260, name: "x", color: "white"},
-    {x: 4800, y: 1475, name: "x", color: "white"},
-    {x: -3750, y: 4325, name: "x", color: "white"},
+    // Маршрут #1
+    {x: -4770, y: 2097, name: "x", color: "white"},
+    {x: -4616, y: 2348, name: "x", color: "white"},
+    {x: -3476, y: 2348, name: "x", color: "white"},
+    {x: -2275, y: 2348, name: "x", color: "white"},
+    {x: -670, y: 2310, name: "x", color: "white"},
+    {x: 3599, y: 2310, name: "x", color: "white"},
+    {x: 4800, y: 1533, name: "x", color: "white"},
+    // Маршрут #2
+    {x: 3599, y: 3497, name: "x", color: "white"},
+    // Маршрут #3
+    {x: -3696, y: 4377, name: "x", color: "white"},
+    {x: -3476, y: 894, name: "x", color: "white"},
+    // Маршрут Sysano
+
   ];
 
   var data = `
@@ -115,7 +135,7 @@
   moder house:-2500:90:-760:true:37E782
   YamYam:2048:88:-3500:true:589D6F
   Gjart:0:141:0:true:47DD91
-  m_i_f:-4718:66:2097:true:D14EAC
+  m_i_f [warp anime]:-4718:66:2097:true:D14EAC
   _FurIon4IK_ [warp lenta]:-4617:68:2407:true:B705A0
   _Dr1ke__:-4793:67:2280:false:26AE09
   lobotomy1:-2549:73:-598:true:0643AF
@@ -124,6 +144,11 @@
   Yral4uk:87:89:1259:true:D2C400
   Perech:-1618:85:119:true:4DBCAF
   Audist:3943:144:759:true:5160AF
+  sempaichik:-3543:95:888:true:53BAEA
+  COBA_Andrew:-1784:77:-1369:true:EBD372
+  vooorsin:-3177:129:-104:true:D5C7A8
+  IAzotI:-3400:96:2311:false:BB620D
+  iphone_15:4824:130:-3160:true:6204DE
   `;
 
   // Регулярное выражение для извлечения данных
@@ -184,13 +209,14 @@
 
     squares.forEach(function(square) {
         var rectElement = document.createElementNS(svgNS, "rect");
-        rectElement.setAttribute("x", (square.x + 5000) * scale);
-        rectElement.setAttribute("y", (square.y + 5000) * scale);
-        rectElement.setAttribute("width", 100 * scale);
-        rectElement.setAttribute("height", 100 * scale);
+        var rectWidth = 200;
+        rectElement.setAttribute("x", (square.x + 5000 - rectWidth / 2) * scale);
+        rectElement.setAttribute("y", (square.y + 5000 - rectWidth / 2) * scale);
+        rectElement.setAttribute("width", rectWidth * scale);
+        rectElement.setAttribute("height", rectWidth * scale);
         rectElement.setAttribute("fill", "transparent");
-        rectElement.setAttribute("stroke", square.color || "black");
-        rectElement.setAttribute("stroke-width", square.strokeWidth || "0.4vh");
+        rectElement.setAttribute("stroke", square.color || "white");
+        rectElement.setAttribute("stroke-width", "0.4vh");
 
         svg.appendChild(rectElement);
     });
@@ -202,11 +228,12 @@
     var scale = canvas.offsetWidth / 10000;
 
     points.forEach(function(point, index) {
-      var div = document.createElement('div');
+      var div = document.createElement('div'); 
       div.className = 'point';
       div.dataset.index = index;
-      div.style.left = ((point.x + 5000) * scale) + 'px';
-      div.style.top = ((point.y + 5000) * scale) + 'px';
+      div.style.left = ((point.x + 5000) * scale - div.offsetWidth / 2) + 'px';
+      div.style.top = ((point.y + 5000) * scale - div.offsetWidth / 2) + 'px';
+
       div.style.backgroundColor = '#' + point.color;
       canvas.appendChild(div);
 
@@ -268,8 +295,8 @@
     pointsElements.forEach(function(pointElement) {
       var pointIndex = parseInt(pointElement.dataset.index);
       var point = points[pointIndex];
-      pointElement.style.left = ((point.x + 5000) * scale) + 'px';
-      pointElement.style.top = ((point.y + 5000) * scale) + 'px';
+      pointElement.style.left = ((point.x + 5000) * scale - pointElement.offsetWidth / 2) + 'px';
+      pointElement.style.top = ((point.y + 5000) * scale - pointElement.offsetWidth / 2) + 'px';
 
       var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
       nameDiv.style.left = ((point.x + 5000) * scale) + 10 + 'px';
