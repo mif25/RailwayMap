@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v05.05.24</title>
+<title>Карта NT1 v10.05.24</title>
 <style>
     body {
         margin: 0;
@@ -92,6 +92,9 @@
     // Маршрут #2
     {x1: 3599, y1: 2300, x2: 3599, y2: 4500, name: "Маршрут #2", color: "red"},
     // {x1: 3599, y1: 4500, x2: 4600, y2: 4500, name: "Маршрут #2", color: "red"},
+    //
+    {x1: -1880, y1: -3286, x2: 1950, y2: -3286, name: "Маршрут #2", color: "red"},
+    {x1: 1950, y1: -3286, x2: 1950, y2: -3570, name: "Маршрут #2", color: "red"},
     // Маршрут #3
     {x1: -3700, y1: 4377, x2: -3476, y2: 4377, name: "Маршрут #3", color: "yellow"},
     {x1: -3476, y1: 4377, x2: -3476, y2: -134, name: "Маршрут #3", color: "yellow"},
@@ -121,6 +124,8 @@
     {x: 4800, y: 1533, name: "x", color: "white"},
     // Маршрут #2
     {x: 3599, y: 3497, name: "x", color: "white"},
+    //
+    {x: 1730, y: -3286, name: "x", color: "white"},
     // Маршрут #3
     {x: -3696, y: 4377, name: "x", color: "white"},
     {x: -3476, y: 894, name: "x", color: "white"},
@@ -153,7 +158,7 @@
   karver:2343:201:-3612:true:4F9607
   The Lobotomy Palace [warp chill]:-2242:89:1981:true:00FF00
   Yral4uk:87:89:1259:true:D2C400
-  Perech:-1618:85:119:true:4DBCAF
+  Perech:4215:85:-3767:true:4DBCAF
   Audist:3943:144:759:true:5160AF
   sempaichik:-3543:95:888:true:53BAEA
   COBA_Andrew:-1784:77:-1369:true:EB5372
@@ -165,7 +170,9 @@
   k1mbor:-2311:261:-568:true:203E52
   FOKSSS:-1763:73:-1455:true:5BFBDE
   den1895:-2678:75:-425:true:E5E718
-  The_Prototypt:-89:101:2071:true:45741A
+  The_Prototypy:-89:101:2071:true:45741A
+  onhovh:1806:76:-3336:true:B813CE
+  gat1448:3210:78:-2889:true:B519B0
   `;
 
   // Регулярное выражение для извлечения данных
