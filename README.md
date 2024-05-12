@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v10.05.24</title>
+<title>Карта NT1 v12.05.24</title>
 <style>
     body {
         margin: 0;
@@ -95,6 +95,9 @@
     //
     {x1: -1880, y1: -3286, x2: 1950, y2: -3286, name: "Маршрут #2", color: "red"},
     {x1: 1950, y1: -3286, x2: 1950, y2: -3570, name: "Маршрут #2", color: "red"},
+    {x1: 1950, y1: -3570, x2: 3908, y2: -3570, name: "Маршрут #2", color: "red"},
+    {x1: 3908, y1: -3570, x2: 3908, y2: -3806, name: "Маршрут #2", color: "red"},
+    {x1: 3908, y1: -3806, x2: 4200, y2: -3806, name: "Маршрут #2", color: "red"},
     // Маршрут #3
     {x1: -3700, y1: 4377, x2: -3476, y2: 4377, name: "Маршрут #3", color: "yellow"},
     {x1: -3476, y1: 4377, x2: -3476, y2: -134, name: "Маршрут #3", color: "yellow"},
@@ -126,6 +129,8 @@
     {x: 3599, y: 3497, name: "x", color: "white"},
     //
     {x: 1730, y: -3286, name: "x", color: "white"},
+    {x: 2104, y: -3570, name: "x", color: "white"},
+    {x: 3954, y: -3806, name: "x", color: "white"},
     // Маршрут #3
     {x: -3696, y: 4377, name: "x", color: "white"},
     {x: -3476, y: 894, name: "x", color: "white"},
@@ -149,7 +154,7 @@
   Dragon2206:-3603:67:-2509:true:A97DF4
   _DER3KIIY_ [warp exe]:-8:109:1576:true:8B88FF
   im_sxorry:-2500:90:-760:true:37E782
-  YamYam:2048:88:-3500:true:589D6F
+  _YamYam_:2100:88:-3446:true:589D6F
   Gjart:0:141:0:true:47DD91
   m_i_f [warp anime]:-4718:66:2097:true:D14EAC
   _FurIon4IK_ [warp lenta]:-4617:68:2407:true:B705A0
@@ -173,6 +178,8 @@
   The_Prototypy:-89:101:2071:true:45741A
   onhovh:1806:76:-3336:true:B813CE
   gat1448:3210:78:-2889:true:B519B0
+  xanees01:3761:66:-3500:true:5745FE
+  DupeBase:3880:66:-800:true:5745FE
   `;
 
   // Регулярное выражение для извлечения данных
