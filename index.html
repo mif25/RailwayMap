@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v12.05.24</title>
+<title>Карта NT1 v15.05.24</title>
 <style>
     body {
         margin: 0;
@@ -97,7 +97,10 @@
     {x1: 1950, y1: -3286, x2: 1950, y2: -3570, name: "Маршрут #2", color: "red"},
     {x1: 1950, y1: -3570, x2: 3908, y2: -3570, name: "Маршрут #2", color: "red"},
     {x1: 3908, y1: -3570, x2: 3908, y2: -3806, name: "Маршрут #2", color: "red"},
-    {x1: 3908, y1: -3806, x2: 4200, y2: -3806, name: "Маршрут #2", color: "red"},
+    {x1: 3908, y1: -3806, x2: 4336, y2: -3806, name: "Маршрут #2", color: "red"},
+    {x1: 4336, y1: -3806, x2: 4336, y2: -3192, name: "Маршрут #2", color: "red"},
+    {x1: 4336, y1: -3192, x2: 4788, y2: -3192, name: "Маршрут #2", color: "red"},
+    {x1: 4788, y1: -3192, x2: 4788, y2: -2900, name: "Маршрут #2", color: "red"},
     // Маршрут #3
     {x1: -3700, y1: 4377, x2: -3476, y2: 4377, name: "Маршрут #3", color: "yellow"},
     {x1: -3476, y1: 4377, x2: -3476, y2: -134, name: "Маршрут #3", color: "yellow"},
@@ -131,6 +134,7 @@
     {x: 1730, y: -3286, name: "x", color: "white"},
     {x: 2104, y: -3570, name: "x", color: "white"},
     {x: 3954, y: -3806, name: "x", color: "white"},
+    {x: 4788, y: -3146, name: "x", color: "white"},
     // Маршрут #3
     {x: -3696, y: 4377, name: "x", color: "white"},
     {x: -3476, y: 894, name: "x", color: "white"},
@@ -180,6 +184,9 @@
   gat1448:3210:78:-2889:true:B519B0
   xanees01:3761:66:-3500:true:5745FE
   DupeBase:3880:66:-800:true:5745FE
+  zxc_kloyn:4384:73:-3569:true:1318A2
+  Деревня#4260:4260:71:-3531:true:BFA080
+  Natalya123:4729:78:-3097:true:21E7D7
   `;
 
   // Регулярное выражение для извлечения данных
