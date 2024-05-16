@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v15.05.24</title>
+<title>Карта NT1 v16.05.24</title>
 <style>
     body {
         margin: 0;
@@ -61,9 +61,10 @@
 <div id="info-block">
   <br>
   Серая ветка - маршрут #1 [m_i_f - Kapysta19] ~30 минут при ~10tps<br>
-  Красная ветка - маршрут #2 [Линия №1 - sysano]  в процессе расширения<br>
+  Красная ветка - маршрут #2 [Линия №3 - SerZax] ~?? минут при ~10tps<br>
   Жёлтая ветка - маршрут #3 [MACROCEIYT - Dragon2206] ~40 минут при ~10tps<br>
   Зелёная ветка - линия sysano<br>
+  Тёмно-красным обозначена адская часть маршрута #2. Чёрные - оси X и Y координат.<br>
   На станцию IAzotI (пересечение 1 и 3 маршрута) можно попасть через /warp mjd<br>
   <br>
   Станции отображаются квадратами, точками указаны базы игроков<br>
@@ -100,7 +101,12 @@
     {x1: 3908, y1: -3806, x2: 4336, y2: -3806, name: "Маршрут #2", color: "red"},
     {x1: 4336, y1: -3806, x2: 4336, y2: -3192, name: "Маршрут #2", color: "red"},
     {x1: 4336, y1: -3192, x2: 4788, y2: -3192, name: "Маршрут #2", color: "red"},
-    {x1: 4788, y1: -3192, x2: 4788, y2: -2900, name: "Маршрут #2", color: "red"},
+    {x1: 4788, y1: -3192, x2: 4788, y2: -2992, name: "Маршрут #2", color: "red"},
+    {x1: 4788, y1: -2992, x2: 3238, y2: -2992, name: "Маршрут #2", color: "red"},
+    {x1: 3238, y1: -2992, x2: 3238, y2: -2861, name: "Маршрут #2", color: "red"},
+    {x1: 3238, y1: -2861, x2: 3238, y2: -2608, name: "Маршрут #2", color: "maroon"},
+    {x1: 3238, y1: -2608, x2: 3599, y2: -2608, name: "Маршрут #2", color: "maroon"},
+    {x1: 3599, y1: -2608, x2: 3599, y2: 2306, name: "Маршрут #2", color: "maroon"},
     // Маршрут #3
     {x1: -3700, y1: 4377, x2: -3476, y2: 4377, name: "Маршрут #3", color: "yellow"},
     {x1: -3476, y1: 4377, x2: -3476, y2: -134, name: "Маршрут #3", color: "yellow"},
@@ -129,14 +135,17 @@
     {x: 3599, y: 2310, name: "x", color: "white"},
     {x: 4800, y: 1533, name: "x", color: "white"},
     // Маршрут #2
-    {x: 3599, y: 3497, name: "x", color: "white"},
-    //
     {x: 1730, y: -3286, name: "x", color: "white"},
     {x: 2104, y: -3570, name: "x", color: "white"},
     {x: 3954, y: -3806, name: "x", color: "white"},
     {x: 4788, y: -3146, name: "x", color: "white"},
+    {x: 3238, y: -2886, name: "x", color: "white"},
+    {x: 3599, y: 760, name: "x", color: "white"},
+    {x: 3599, y: 2310, name: "x", color: "white"},
+    {x: 3599, y: 3497, name: "x", color: "white"},
     // Маршрут #3
     {x: -3696, y: 4377, name: "x", color: "white"},
+    {x: -3476, y: 2348, name: "x", color: "white"},
     {x: -3476, y: 894, name: "x", color: "white"},
     {x: -3137, y: -134, name: "x", color: "white"},
     {x: -2455, y: -576, name: "x", color: "white"},
