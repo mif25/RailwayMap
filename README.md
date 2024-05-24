@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v18.05.24</title>
+<title>Карта NT1 v24.05.24</title>
 <style>
     body {
         margin: 0;
@@ -54,23 +54,26 @@
 <div class="title">
   <h1>Карта МЖД на сервере NanoTech#1</h1>
 </div>
+
+<div id="buttons-container"></div>
+
 <div id="canvasContainer">
     <div id="canvas"></div>
 </div>
+
 <div id="coordinatesDisplay"></div>
 <div id="info-block">
   <br>
-  Серая ветка - маршрут #1 [m_i_f - Kapysta19] ~30 минут при ~10tps<br>
-  Красная ветка - маршрут #2 [Линия №3 - SerZax] ~?? минут при ~10tps<br>
-  Жёлтая ветка - маршрут #3 [MACROCEIYT - Dragon2206] ~40 минут при ~10tps<br>
+  Серая ветка - Маршрут #1 [m_i_f - Kapysta19] ~30 минут при ~10tps<br>
+  Красная ветка - Маршрут #2 [Линия №3 - SerZax] ~50 минут при ~10tps<br>
+  Жёлтая ветка - Маршрут #3 [MACROCEIYT - Dragon2206] ~40 минут при ~10tps<br>
   Зелёная ветка - линия sysano<br>
   Тёмно-красным обозначена адская часть маршрута #2. Чёрные - оси X и Y координат.<br>
   На станцию IAzotI (пересечение 1 и 3 маршрута) можно попасть через /warp mjd<br>
   <br>
-  Станции отображаются квадратами, точками указаны базы игроков<br>
+  Железнодорожные станции отображаются квадратами, точками указаны базы игроков<br>
   Для того, чтобы поставить вагонетку на рельсы, используйте плиты около соответствующих железнодорожных путей.<br>
   На МЖД используется правосторонее движение, поэтому используйте ближний путь для движения направо, а дальний для движения налево.<br>
-  Станции именуются ближайшим к ним точкам, которые указаны на карте или названиями линий, на которые можно совершить пересадку.<br>
   <br>
   Проект, на котором всё это реализуется - StreamCraft, сервер NanoTech #1.<br>
   Страница и железнодорожная сеть администрируется игроком m_i_f.<br>
@@ -122,35 +125,39 @@
     {x1: 4367, y1: 3332, x2: 4367, y2: 3183, name: "Маршрут #2", color: "green"},
   ];
 
-  var squares = [
-    // Маршрут #1
-    {x: -4770, y: 2097, name: "x", color: "white"},
-    {x: -4616, y: 2348, name: "x", color: "white"},
-    {x: -3476, y: 2348, name: "x", color: "white"},
-    {x: -2275, y: 2348, name: "x", color: "white"},
-    {x: -670, y: 2310, name: "x", color: "white"},
-    {x: 3599, y: 2310, name: "x", color: "white"},
-    {x: 4800, y: 1533, name: "x", color: "white"},
-    // Маршрут #2
-    {x: 1730, y: -3286, name: "x", color: "white"},
-    {x: 2104, y: -3570, name: "x", color: "white"},
-    {x: 3954, y: -3806, name: "x", color: "white"},
-    {x: 4788, y: -3146, name: "x", color: "white"},
-    {x: 3238, y: -2886, name: "x", color: "white"},
-    {x: 3599, y: 760, name: "x", color: "white"},
-    {x: 3599, y: 2310, name: "x", color: "white"},
-    {x: 3599, y: 3497, name: "x", color: "white"},
-    {x: 4449, y: 4597, name: "x", color: "white"},
-    // Маршрут #3
-    {x: -3696, y: 4377, name: "x", color: "white"},
-    {x: -3476, y: 2348, name: "x", color: "white"},
-    {x: -3476, y: 894, name: "x", color: "white"},
-    {x: -3137, y: -134, name: "x", color: "white"},
-    {x: -2455, y: -576, name: "x", color: "white"},
-    {x: -1817, y: -1370, name: "x", color: "white"},
-    {x: -1863, y: -3276, name: "x", color: "white"},
-    {x: -2599, y: -3276, name: "x", color: "white"},
-    {x: -3603, y: -2641, name: "x", color: "white"},
+  var route_1 = [
+    {x: -4770, y: 2097, name: "m_i_f", color: "white"},
+    {x: -4616, y: 2348, name: "_FurIon4IK_", color: "white"},
+    {x: -3476, y: 2348, name: "IAzotI", color: "white"},
+    {x: -2275, y: 2348, name: "warp chill", color: "white"},
+    {x: -670, y: 2310, name: "VOLKrust", color: "white"},
+    {x: 3599, y: 2310, name: "Линия #2", color: "white"},
+    {x: 4800, y: 1533, name: "Kapysta19", color: "white"}
+  ];
+
+  var route_2 = [
+    {x: -1863, y: -3276, name: "Линия #3", color: "white"},
+    {x: 1730, y: -3286, name: "onhovh", color: "white"},
+    {x: 2104, y: -3570, name: "_YamYam_", color: "white"},
+    {x: 3954, y: -3806, name: "_F_I_Z_I_K_", color: "white"},
+    {x: 4788, y: -3146, name: "Iphone_15", color: "white"},
+    {x: 3238, y: -2886, name: "gat1448", color: "white"},
+    {x: 3599, y: 760, name: "Audist", color: "white"},
+    {x: 3599, y: 2310, name: "Линия #1", color: "white"},
+    {x: 3599, y: 3497, name: "sysano", color: "white"},
+    {x: 4449, y: 4597, name: "SerZax", color: "white"},
+  ];
+
+  var route_3 = [
+    {x: -3696, y: 4377, name: "MACROICEYT", color: "white"},
+    {x: -3476, y: 2348, name: "Линия #1", color: "white"},
+    {x: -3476, y: 894, name: "sempaichik", color: "white"},
+    {x: -3137, y: -134, name: "vooorsin", color: "white"},
+    {x: -2455, y: -576, name: "lobotomy1", color: "white"},
+    {x: -1817, y: -1370, name: "COBA", color: "white"},
+    {x: -1863, y: -3276, name: "Линия #2", color: "white"},
+    {x: -2599, y: -3276, name: "Рынок", color: "white"},
+    {x: -3603, y: -2641, name: "Dragon2206", color: "white"},
   ];
 
   var data = `
@@ -212,6 +219,57 @@
     points.push({ x: x, y: y, name: name, color: color });
   }
 
+  function createRouteButtons() {
+    var buttonContainer = document.getElementById('buttons-container');
+
+    for (var i = 1; i <= 3; i++) {
+      var button = document.createElement('button');
+      button.innerHTML = "Маршрут #" + i;
+      button.dataset.routeNumber = i;
+      button.addEventListener('click', function() {
+        var routeNumber = this.dataset.routeNumber;
+        showRouteElements(routeNumber);
+      });
+      buttonContainer.appendChild(button);
+    }
+
+    var resetButton = document.createElement('button');
+    resetButton.innerHTML = "Сбросить";
+    resetButton.addEventListener('click', function() {
+      resetRouteElements();
+    });
+    buttonContainer.appendChild(resetButton);
+  }
+
+  function showRouteElements(routeNumber) {
+    var canvas = document.getElementById('canvas');
+    var elements = canvas.querySelectorAll('[data-route-number]');
+    elements.forEach(function(element) {
+      if (element.dataset.routeNumber == routeNumber) {
+        element.style.visibility = 'visible';
+      } else {
+        element.style.visibility = 'hidden';
+      }
+    });
+  }
+
+  function resetRouteElements() {
+    var canvas = document.getElementById('canvas');
+    var elements = canvas.querySelectorAll('[data-route-number]');
+    elements.forEach(function(element) {
+      element.style.visibility = 'visible';
+    });
+    var textElements = canvas.querySelectorAll('.info-name');
+    textElements.forEach(function(element) {
+      element.style.visibility = 'hidden';
+    });
+  }
+
+  // Создание кнопок при загрузке страницы
+  document.addEventListener('DOMContentLoaded', function() {
+    createRouteButtons();
+  });
+
   // Метод отслеживания курсора
   canvas.addEventListener('mousemove', function(event) {
     var canvas = document.getElementById('canvas');
@@ -226,6 +284,73 @@
     // Отображаем координаты курсора в элементе для отображения координат
     coordinatesDisplay.textContent = 'X: ' + Math.round(x) + ', Y: ' + Math.round(y);
   });
+
+  function drawRoute(route, routeNumber, canvas, svg, svgNS, scale) {
+    route.forEach(function(square) {
+      var rectElement = document.createElementNS(svgNS, "rect");
+      var rectWidth = 200;
+      rectElement.setAttribute("x", (square.x + 5000 - rectWidth / 2) * scale);
+      rectElement.setAttribute("y", (square.y + 5000 - rectWidth / 2) * scale);
+      rectElement.setAttribute("width", rectWidth * scale);
+      rectElement.setAttribute("height", rectWidth * scale);
+      rectElement.setAttribute("fill", "transparent");
+      rectElement.setAttribute("stroke", square.color || "white");
+      rectElement.setAttribute("stroke-width", "0.4vh");
+      rectElement.dataset.routeNumber = routeNumber;
+
+      svg.appendChild(rectElement);
+
+      // Добавляем текст рядом с квадратом
+      var nameDiv = document.createElement('div');
+      nameDiv.className = 'info-name';
+      nameDiv.innerHTML = square.name;
+      nameDiv.dataset.squareName = square.name;
+      nameDiv.dataset.routeNumber = routeNumber;
+      nameDiv.style.position = 'absolute';
+      nameDiv.style.visibility = 'hidden';
+      canvas.appendChild(nameDiv);
+
+      nameDiv.style.left = ((square.x + 5000) * scale) + 20 + 'px';
+      nameDiv.style.top = ((square.y + 5000) * scale) - 20 + 'px';
+
+      if (canvas.offsetWidth - (square.x + 5000) * scale < nameDiv.offsetWidth) {
+          nameDiv.style.left = ((square.x + 5000) * scale) - nameDiv.offsetWidth - 10 + 'px';
+      }
+
+      rectElement.addEventListener('click', function() {
+          if (!rectElement.classList.contains('clicked')) {
+              nameDiv.style.visibility = 'visible';
+              rectElement.classList.add('clicked');
+          } else {
+              nameDiv.style.visibility = 'hidden';
+              rectElement.classList.remove('clicked');
+          }
+      });
+
+      nameDiv.addEventListener('click', function() {
+          if (rectElement.classList.contains('clicked')) {
+              nameDiv.style.visibility = 'hidden';
+              rectElement.classList.remove('clicked');
+          }
+      });
+
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (!isMobile) {
+        rectElement.addEventListener('mouseover', function() {
+          if (!rectElement.classList.contains('clicked')) {
+            nameDiv.style.visibility = 'visible';
+          }
+        });
+
+        rectElement.addEventListener('mouseout', function() {
+          if (!rectElement.classList.contains('clicked')) {
+            nameDiv.style.visibility = 'hidden';
+          }
+        });
+      }
+    });
+  }
 
   function drawShapes() {
     var canvas = document.getElementById('canvas');
@@ -255,19 +380,10 @@
       svg.appendChild(lineElement);
     });
 
-    squares.forEach(function(square) {
-        var rectElement = document.createElementNS(svgNS, "rect");
-        var rectWidth = 200;
-        rectElement.setAttribute("x", (square.x + 5000 - rectWidth / 2) * scale);
-        rectElement.setAttribute("y", (square.y + 5000 - rectWidth / 2) * scale);
-        rectElement.setAttribute("width", rectWidth * scale);
-        rectElement.setAttribute("height", rectWidth * scale);
-        rectElement.setAttribute("fill", "transparent");
-        rectElement.setAttribute("stroke", square.color || "white");
-        rectElement.setAttribute("stroke-width", "0.4vh");
+    drawRoute(route_1, 1, canvas, svg, svgNS, scale);
+    drawRoute(route_2, 2, canvas, svg, svgNS, scale);
+    drawRoute(route_3, 3, canvas, svg, svgNS, scale);
 
-        svg.appendChild(rectElement);
-    });
     canvas.appendChild(svg);
   }
 
@@ -326,12 +442,12 @@
         });
 
         div.addEventListener('mouseout', function() {
-          var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
           if (!div.classList.contains('clicked')) {
             nameDiv.style.visibility = 'hidden';
           }
         });
       }
+
     });
   }
 
@@ -355,7 +471,7 @@
       }
     });
   }
-
+  
   window.onload = function() {
     var canvasContainer = document.getElementById('canvasContainer');
 
