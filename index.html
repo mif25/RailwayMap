@@ -3,50 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v24.05.24</title>
+<title>Карта NT1 v25.05.24</title>
 <style>
     body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #bbbbbd;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #bbbbbd;
     }
     #canvasContainer {
-        width: 100%;
-        max-width: 1000px;
-        min-width: 200px;
-        position: relative;
-        border: 4px solid #ccc;
+      width: 100%;
+      max-width: 1000px;
+      min-width: 200px;
+      position: relative;
+      border: 4px solid #ccc;
     }
     #canvas {
-        width: 100%;
-        height: 100%;
-        position: relative;
+      width: 100%;
+      height: 100%;
+      position: relative;
     }
     #coordinatesDisplay {
       position: fixed;
       font-size: 3vh;
       bottom: 5px;
       right: 5px;
+      padding: 2px;
+      border: 2px solid black;
+      background-color: #bbbbbd;
     }
     .point {
-        position: absolute;
-        width: 2vh;
-        height: 2vh;
-        border-radius: 50%;
-        background-color: red;
+      position: absolute;
+      width: 2vh;
+      height: 2vh;
+      border-radius: 50%;
+      background-color: red;
     }
     .info-name {
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        padding: 5px;
-        border-radius: 5px;
-        z-index: 5;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+      z-index: 5;
+    }
+    .route {
+      margin-bottom: 20px;
+    }
+    .route-header {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .station-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .station-container:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+    .station-names {
+      flex: 1;
+    }
+    .station-distance {
+      white-space: nowrap;
     }
 </style>
 </head>
@@ -62,8 +91,113 @@
 </div>
 
 <div id="coordinatesDisplay"></div>
+
 <div id="info-block">
-  <br>
+  
+  <div class="route">
+    <div class="route-header">Маршрут #1 [m_i_f - Kapysta19] (Серая линия)</div>
+    <div class="station-container">
+        <div class="station-names">m_i_f / _FurIon4IK_</div>
+        <div class="station-distance">500м</div>
+    </div>
+    <div class="station-container">
+        <div class="station-names">_FurIon4IK_ / Линия #3</div>
+        <div class="station-distance">1200м</div>
+    </div>
+    <div class="station-container">
+        <div class="station-names">Линия #3 / warp_chill</div>
+        <div class="station-distance">1400м</div>
+    </div>
+    <div class="station-container">
+        <div class="station-names">warp_chill / VOLKrust</div>
+        <div class="station-distance">1400м</div>
+    </div>
+    <div class="station-container">
+        <div class="station-names">VOLKrust / Линия #2</div>
+        <div class="station-distance">4300м</div>
+    </div>
+    <div class="station-container">
+        <div class="station-names">Линия #2 / Kapysta19</div>
+        <div class="station-distance">1900м</div>
+    </div>
+  </div>
+
+  <div class="route">
+      <div class="route-header">Маршрут #2 [Линия №3 - SerZax] (Красная линия)</div>
+      <div class="station-container">
+          <div class="station-names">Линия #3 / onhovh</div>
+          <div class="station-distance">3600м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">onhovh / YamYam</div>
+          <div class="station-distance">656м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">YamYam / F_I_Z_I_K</div>
+          <div class="station-distance">2080м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">F_I_Z_I_K / Iphone_15</div>
+          <div class="station-distance">1500м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">Iphone_15 / gat1448</div>
+          <div class="station-distance">1800м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">gat1448 / Audist</div>
+          <div class="station-distance">Ад 500м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">Audist / Линия #1</div>
+          <div class="station-distance">Ад 200м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">Линия #1 / sysano</div>
+          <div class="station-distance">1150м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">sysano / SerZax</div>
+          <div class="station-distance">2000м</div>
+      </div>
+  </div>
+
+  <div class="route">
+      <div class="route-header">Маршрут #3 [MACROCEIYT - Dragon2206] (Жёлтая линия)</div>
+      <div class="station-container">
+          <div class="station-names">MARCOICEYT / Линия #1</div>
+          <div class="station-distance">2440м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">Линия #1 / sempaichik</div>
+          <div class="station-distance">1460м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">sempaichik / vooorsin</div>
+          <div class="station-distance">1370м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">vooorsin / lobotomy1</div>
+          <div class="station-distance">1120м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">lobotomy1 / СОВА</div>
+          <div class="station-distance">1430м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">СОВА / Линия #2</div>
+          <div class="station-distance">1900м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">Линия #2 / Рынок</div>
+          <div class="station-distance">800м</div>
+      </div>
+      <div class="station-container">
+          <div class="station-names">Рынок / Dragon2206</div>
+          <div class="station-distance">1650м</div>
+      </div>
+  </div>
+
   Серая ветка - Маршрут #1 [m_i_f - Kapysta19] ~30 минут при ~10tps<br>
   Красная ветка - Маршрут #2 [Линия №3 - SerZax] ~50 минут при ~10tps<br>
   Жёлтая ветка - Маршрут #3 [MACROCEIYT - Dragon2206] ~40 минут при ~10tps<br>
@@ -77,9 +211,58 @@
   <br>
   Проект, на котором всё это реализуется - StreamCraft, сервер NanoTech #1.<br>
   Страница и железнодорожная сеть администрируется игроком m_i_f.<br>
+  <br>
 </div>
 
 <script>
+  var data = `
+    MACROICEYT [warp cool]:-3688:87:4439:true:6C7A1D
+    sysano:3582:65:3499:true:821FB0
+    MafioznikZMP [warp dark]:4601:31:4664:true:FC2790
+    SerZax:4480:77:4517:true:9B06F3
+    Kapysta19:4887:66:1442:true:EC8D33
+    _F_I_Z_I_K_:3927:210:-3827:true:FC0FEC
+    VOLKrust:-678:82:2126:true:9C7086
+    Seeesh:-3047:85:-157:true:5A22C8
+    Dragon2206:-3603:67:-2509:true:A97DF4
+    _DER3KIIY_ [warp exe]:-8:109:1576:true:8B88FF
+    im_sxorry:-2500:90:-760:true:37E782
+    _YamYam_:2100:88:-3446:true:589D6F
+    Gjart:0:141:0:true:47DD91
+    m_i_f:-4718:66:2097:true:D14EAC
+    _FurIon4IK_ [warp lenta]:-4617:68:2407:true:B705A0
+    _Dr1ke__:-4793:67:2280:false:26AE09
+    lobotomy1:-2549:73:-598:true:0643AF
+    karver:2343:201:-3612:true:4F9607
+    The Lobotomy Palace [warp chill]:-2242:89:1981:true:00FF00
+    Yral4uk:87:89:1259:true:D2C400
+    Perech:4215:85:-3767:true:4DBCAF
+    Audist:3943:144:759:true:5160AF
+    sempaichik:-3543:95:888:true:53BAEA
+    COBA_Andrew:-1784:77:-1369:true:EB5372
+    vooorsin:-3177:129:-104:true:D53131
+    IAzotI [warp mjd]:-3400:96:2311:false:BB620D
+    Iphone_15:4824:130:-3160:true:6204DE
+    Pumple [warp shop]:-2553:66:920:true:1B61E5
+    Рынок:-2748:68:-3339:true:5DE091
+    k1mbor:-2311:261:-568:true:203E52
+    FOKSSS:-1763:73:-1455:true:5BFBDE
+    den1895:-2678:75:-425:true:E5E718
+    The_Prototypy:-89:101:2071:true:45741A
+    onhovh:1806:76:-3336:true:B813CE
+    gat1448:3210:78:-2889:true:B519B0
+    xanees01:3761:66:-3500:true:5745FE
+    DupeBase:3880:66:-800:true:5745FE
+    zxc_kloyn:4384:73:-3569:true:1318A2
+    Деревня#4260:4260:71:-3531:true:BFA080
+    Natalya123:4729:78:-3097:true:21E7D7
+    OSASA:-3880:80:-3180:true:D65DF5
+    Warfaces:4681:100:4790:true:F633D3
+    rustqa:-137:115:1512:true:F924E0
+    artemida010:3622:254:3416:false:8ACEF6
+    OSASA:4361:84:4648:false:D772AE
+  `;
+
   var lines = [
     {x1: 0, y1: -5000, x2: 0, y2: 5000, name: "x", color: "black"},
     {x1: -5000, y1: 0, x2: 5000, y2: 0, name: "y", color: "black"},
@@ -159,52 +342,6 @@
     {x: -2599, y: -3276, name: "Рынок", color: "white"},
     {x: -3603, y: -2641, name: "Dragon2206", color: "white"},
   ];
-
-  var data = `
-  MACROICEYT [warp cool]:-3688:87:4439:true:6C7A1D
-  sysano:3582:65:3499:true:821FB0
-  MafioznikZMP [warp dark]:4601:31:4664:true:FC2790
-  SerZax:4480:77:4517:true:9B06F3
-  Kapysta19:4887:66:1442:true:EC8D33
-  _F_I_Z_I_K_:3927:210:-3827:true:FC0FEC
-  VOLKrust:-678:82:2126:true:9C7086
-  Seeesh:-3047:85:-157:true:5A22C8
-  Dragon2206:-3603:67:-2509:true:A97DF4
-  _DER3KIIY_ [warp exe]:-8:109:1576:true:8B88FF
-  im_sxorry:-2500:90:-760:true:37E782
-  _YamYam_:2100:88:-3446:true:589D6F
-  Gjart:0:141:0:true:47DD91
-  m_i_f [warp anime]:-4718:66:2097:true:D14EAC
-  _FurIon4IK_ [warp lenta]:-4617:68:2407:true:B705A0
-  _Dr1ke__:-4793:67:2280:false:26AE09
-  lobotomy1:-2549:73:-598:true:0643AF
-  karver:2343:201:-3612:true:4F9607
-  The Lobotomy Palace [warp chill]:-2242:89:1981:true:00FF00
-  Yral4uk:87:89:1259:true:D2C400
-  Perech:4215:85:-3767:true:4DBCAF
-  Audist:3943:144:759:true:5160AF
-  sempaichik:-3543:95:888:true:53BAEA
-  COBA_Andrew:-1784:77:-1369:true:EB5372
-  vooorsin:-3177:129:-104:true:D53131
-  IAzotI:-3400:96:2311:false:BB620D
-  Iphone_15:4824:130:-3160:true:6204DE
-  Pumple [warp shop]:-2553:66:920:true:1B61E5
-  kitkat market:-2748:68:-3339:true:5DE091
-  k1mbor:-2311:261:-568:true:203E52
-  FOKSSS:-1763:73:-1455:true:5BFBDE
-  den1895:-2678:75:-425:true:E5E718
-  The_Prototypy:-89:101:2071:true:45741A
-  onhovh:1806:76:-3336:true:B813CE
-  gat1448:3210:78:-2889:true:B519B0
-  xanees01:3761:66:-3500:true:5745FE
-  DupeBase:3880:66:-800:true:5745FE
-  zxc_kloyn:4384:73:-3569:true:1318A2
-  Деревня#4260:4260:71:-3531:true:BFA080
-  Natalya123:4729:78:-3097:true:21E7D7
-  OSASA:-3880:80:-3180:true:D65DF5
-  Warfaces:4681:100:4790:true:F633D3
-  rustqa:-137:115:1512:true:F924E0
-  `;
 
   // Регулярное выражение для извлечения данных
   var regex = /([^:]+):(-?\d+):[^:]+:(-?\d+):[^:]+:([0-9A-F]+)/g;
