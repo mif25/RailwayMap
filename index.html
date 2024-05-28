@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v25.05.24</title>
+<title>Карта NT1 v28.05.24</title>
 <style>
     body {
       margin: 0;
@@ -38,8 +38,8 @@
     }
     .point {
       position: absolute;
-      width: 2vh;
-      height: 2vh;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background-color: red;
     }
@@ -253,9 +253,7 @@
     gat1448:3210:78:-2889:true:B519B0
     DupeBase:3880:66:-800:true:5745FE
     zxc_kloyn:4384:73:-3569:true:1318A2
-    Деревня#4260:4260:71:-3531:true:BFA080
     Natalya123:4729:78:-3097:true:21E7D7
-    OSASA:-3880:80:-3180:true:D65DF5
     Warfaces:4681:100:4790:true:F633D3
     rustqa:-137:115:1512:true:F924E0
     artemida010:3622:254:3416:false:8ACEF6
@@ -360,6 +358,13 @@
   function createRouteButtons() {
     var buttonContainer = document.getElementById('buttons-container');
 
+    var showButton = document.createElement('button');
+    showButton.innerHTML = "Показать все";
+    showButton.addEventListener('click', function() {
+      showAllRouteElements();
+    });
+    buttonContainer.appendChild(showButton);
+
     for (var i = 1; i <= 3; i++) {
       var button = document.createElement('button');
       button.innerHTML = "Маршрут #" + i;
@@ -403,6 +408,18 @@
     });
   }
 
+  function showAllRouteElements() {
+    var canvas = document.getElementById('canvas');
+    var textElements = canvas.querySelectorAll('.info-name');
+    textElements.forEach(function(element) {
+      element.style.visibility = 'visible';
+    });
+    var textElements = canvas.querySelectorAll('.info-name-station');
+    textElements.forEach(function(element) {
+      element.style.visibility = 'hidden';
+    });
+  }
+
   // Создание кнопок при загрузке страницы
   document.addEventListener('DOMContentLoaded', function() {
     createRouteButtons();
@@ -423,7 +440,7 @@
     coordinatesDisplay.textContent = 'X: ' + Math.round(x) + ', Y: ' + Math.round(y);
   });
 
-  function drawRoute(route, routeNumber, canvas, svg, svgNS, scale) {
+  function drawRouteStations(route, routeNumber, canvas, svg, svgNS, scale) {
     route.forEach(function(square) {
       var rectElement = document.createElementNS(svgNS, "rect");
       var rectWidth = 200;
@@ -440,7 +457,7 @@
 
       // Добавляем текст рядом с квадратом
       var nameDiv = document.createElement('div');
-      nameDiv.className = 'info-name';
+      nameDiv.className = 'info-name-station';
       nameDiv.innerHTML = square.name;
       nameDiv.dataset.squareName = square.name;
       nameDiv.dataset.routeNumber = routeNumber;
@@ -518,9 +535,9 @@
       svg.appendChild(lineElement);
     });
 
-    drawRoute(route_1, 1, canvas, svg, svgNS, scale);
-    drawRoute(route_2, 2, canvas, svg, svgNS, scale);
-    drawRoute(route_3, 3, canvas, svg, svgNS, scale);
+    drawRouteStations(route_1, 1, canvas, svg, svgNS, scale);
+    drawRouteStations(route_2, 2, canvas, svg, svgNS, scale);
+    drawRouteStations(route_3, 3, canvas, svg, svgNS, scale);
 
     canvas.appendChild(svg);
   }
@@ -597,6 +614,10 @@
     pointsElements.forEach(function(pointElement) {
       var pointIndex = parseInt(pointElement.dataset.index);
       var point = points[pointIndex];
+
+      pointElement.style.width = 160 * scale + 'px';
+      pointElement.style.height = 160 * scale + 'px';
+
       pointElement.style.left = ((point.x + 5000) * scale - pointElement.offsetWidth / 2) + 'px';
       pointElement.style.top = ((point.y + 5000) * scale - pointElement.offsetWidth / 2) + 'px';
 
