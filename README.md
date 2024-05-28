@@ -251,7 +251,6 @@
     The_Prototypy:-89:101:2071:true:45741A
     onhovh:1806:76:-3336:true:B813CE
     gat1448:3210:78:-2889:true:B519B0
-    xanees01:3761:66:-3500:true:5745FE
     DupeBase:3880:66:-800:true:5745FE
     zxc_kloyn:4384:73:-3569:true:1318A2
     Деревня#4260:4260:71:-3531:true:BFA080
@@ -261,6 +260,8 @@
     rustqa:-137:115:1512:true:F924E0
     artemida010:3622:254:3416:false:8ACEF6
     OSASA:4361:84:4648:false:D772AE
+    torreto123:4309:100:-3965:true:99316B
+    Xanees01:3760:81:-3507:true:0BA1B1
   `;
 
   var lines = [
