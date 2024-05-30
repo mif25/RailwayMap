@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Карта NT1 v28.05.24</title>
+<title>Карта NT1 v30.05.24</title>
 <style>
     body {
       margin: 0;
@@ -43,7 +43,7 @@
       border-radius: 50%;
       background-color: red;
     }
-    .info-name {
+    .info-name, .info-name-station{
       position: absolute;
       background-color: rgba(0, 0, 0, 0.7);
       color: #fff;
@@ -361,7 +361,7 @@
     var showButton = document.createElement('button');
     showButton.innerHTML = "Показать все";
     showButton.addEventListener('click', function() {
-      showAllRouteElements();
+      showAllPointElements();
     });
     buttonContainer.appendChild(showButton);
 
@@ -406,16 +406,24 @@
     textElements.forEach(function(element) {
       element.style.visibility = 'hidden';
     });
+    var textStationElements = canvas.querySelectorAll('.info-name-station');
+    textStationElements.forEach(function(element) {
+      element.style.visibility = 'hidden';
+    });
   }
 
-  function showAllRouteElements() {
+  function showAllPointElements() {
     var canvas = document.getElementById('canvas');
+    var elements = canvas.querySelectorAll('[data-route-number]');
+    elements.forEach(function(element) {
+      element.style.visibility = 'visible';
+    });
     var textElements = canvas.querySelectorAll('.info-name');
     textElements.forEach(function(element) {
       element.style.visibility = 'visible';
     });
-    var textElements = canvas.querySelectorAll('.info-name-station');
-    textElements.forEach(function(element) {
+    var textStationElements = canvas.querySelectorAll('.info-name-station');
+    textStationElements.forEach(function(element) {
       element.style.visibility = 'hidden';
     });
   }
@@ -620,7 +628,7 @@
 
       pointElement.style.left = ((point.x + 5000) * scale - pointElement.offsetWidth / 2) + 'px';
       pointElement.style.top = ((point.y + 5000) * scale - pointElement.offsetWidth / 2) + 'px';
-
+      
       var nameDiv = canvas.querySelector(`.info-name[data-point-name="${point.name}"]`);
       nameDiv.style.left = ((point.x + 5000) * scale) + 10 + 'px';
       nameDiv.style.top = ((point.y + 5000) * scale) - 20 + 'px';
